@@ -81,6 +81,35 @@ const startGame = () => {
     }, 1000)
 }
 
+const endGame = () => {
+    // Stop the timer loop
+    clearInterval(state.loop);
+  
+    // Calculate total time in seconds
+    const totalTimeInSeconds = state.totalTime;
+  
+    // Calculate memory efficiency score
+    const efficiencyScore = calculateEfficiency(totalTimeInSeconds, state.totalFlips);
+  
+    // Display efficiency score to the player
+    displayEfficiency(efficiencyScore);
+};
+
+const calculateEfficiency = (totalTimeInSeconds, totalMoves) => {
+    // Adjust weights as needed
+    const timeWeight = 2; // Weight for time (higher is more important)
+    const moveWeight = 1; // Weight for moves
+  
+    // Calculate efficiency score using a weighted average
+    const efficiencyScore = Math.round((1000 / (totalTimeInSeconds * timeWeight + totalMoves * moveWeight)) * 100);
+    return efficiencyScore;
+};
+
+const displayEfficiency = (score) => {
+    const efficiencyElement = document.querySelector('.efficiency');
+    efficiencyElement.innerText = `Memory Efficiency: ${score}%`;
+};
+
 const flipBackCards = () => {
     document.querySelectorAll('.card:not(.matched)').forEach(card => {
         card.classList.remove('flipped')
@@ -115,17 +144,18 @@ const flipCard = card => {
     }
     if (!document.querySelectorAll('.card:not(.flipped)').length) {
         setTimeout(() => {
-            selectors.boardContainer.classList.add('flipped')
+            selectors.boardContainer.classList.add('flipped');
             selectors.win.innerHTML = `
                 <span class="win-text">
                     You won!<br />
                     with <span class="highlight">${state.totalFlips}</span> moves<br />
                     under <span class="highlight">${state.totalTime}</span> seconds
                 </span>
-            `
-
-            clearInterval(state.loop)
-        }, 1000)
+            `;
+            endGame();
+        
+            clearInterval(state.loop);
+        }, 1000);
     }
 }
 
