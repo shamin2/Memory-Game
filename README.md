@@ -12,7 +12,7 @@ A fun and interactive memory game built with vanilla JavaScript, HTML, and CSS. 
 
 ## Description
 
-The Memory Game is a web-based application where players flip cards to find matching pairs. The objective is to match all pairs of cards with the fewest moves and in the shortest time possible. The game includes features like a timer, move counter, and a hint system to assist players.
+The Memory Game is a web-based application where players flip their cards to find matching pairs. The objective is to match all pairs of cards with the fewest moves and in the shortest time possible. The game includes features like a timer, move counter, and a hint system to assist players.
 
 ## Features
 
