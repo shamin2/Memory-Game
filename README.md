@@ -1,6 +1,6 @@
 # Memory Game
 
-A fun and interactive memory game built with vanilla JavaScript, HTML, and CSS. Test your memory skills by matching pairs of cards within the shortest time and with the fewest moves possible.
+A fun and interactive memory game built with vanilla JavaScript, HTML, and CSS. Test your memory skills by matching pairs of cards within the shortest possible time and with the fewest moves possible.
 
 ## Table of Contents
 
